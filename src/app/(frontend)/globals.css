@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: unset;
+    font-weight: unset;
+  }
+
+  :root {
+    /* Core */
+    --foreground: 222 50% 10%;
+    /* Dark blue-gray */
+    --background: 210 20% 98%;
+    /* Near-white with cool tint */
+
+    /* Card */
+    --card: 200 20% 15%;
+    /* Slightly lighter than background */
+    --card-foreground: 210 20% 98%;
+    /* Same as foreground */
+
+    /* Popover */
+    --popover: 200 20% 20%;
+    /* Subtle lift from background */
+    --popover-foreground: 210 20% 98%;
+    /* Same as foreground */
+
+    /* Primary */
+    --primary: 196 100% 47%;
+    /* Vibrant cyan-blue */
+    --primary-foreground: 210 40% 98%;
+    /* Near-white */
+
+    /* Secondary */
+    --secondary: 190 60% 70%;
+    /* Soft cyan */
+    --secondary-foreground: 222 50% 20%;
+    /* Darker blue-gray */
+
+    /* Muted */
+    --muted: 200 20% 25%;
+    /* Muted blue-gray */
+    --muted-foreground: 210 20% 60%;
+    /* Mid-tone gray */
+
+    /* Accent */
+    --accent: 180 80% 60%;
+    /* Bright teal */
+    --accent-foreground: 222 50% 20%;
+    /* Darker blue-gray */
+
+    /* Destructive */
+    --destructive: 0 80% 50%;
+    /* Bold red */
+    --destructive-foreground: 0 0% 95%;
+    /* Near-white */
+
+    /* UI Elements */
+    --border: 210 30% 25%;
+    /* Subtle gray-blue */
+    --input: 200 20% 30%;
+    /* Slightly lighter muted */
+    --ring: 196 100% 47%;
+    /* Matches primary */
+
+    /* Radius */
+    --radius: 0.2rem;
+    /* Unchanged */
+
+    /* Status */
+    --success: 170 60% 40%;
+    /* Dark teal */
+    --warning: 34 80% 50%;
+    /* Dark amber */
+    --error: 10 80% 50%;
+    /* Deep red */
+    /* --background: 0 0% 100%; */
+    /* --foreground: 222.2 84% 4.9%; */
+    /**/
+    /* --card: 240 5% 96%; */
+    /* --card-foreground: 222.2 84% 4.9%; */
+    /**/
+    /* --popover: 0 0% 100%; */
+    /* --popover-foreground: 222.2 84% 4.9%; */
+    /**/
+    /* --primary: 196 100% 47%; */
+    /* --primary-foreground: 210 40% 98%; */
+    /**/
+    /* --secondary: 210 40% 96.1%; */
+    /* --secondary-foreground: 222.2 47.4% 11.2%; */
+    /**/
+    /* --muted: 210 40% 96.1%; */
+    /* --muted-foreground: 215.4 16.3% 46.9%; */
+    /**/
+    /* --accent: 210 40% 96.1%; */
+    /* --accent-foreground: 222.2 47.4% 11.2%; */
+    /**/
+    /* --destructive: 0 84.2% 60.2%; */
+    /* --destructive-foreground: 210 40% 98%; */
+    /**/
+    /* --border: 240 6% 80%; */
+    /* --input: 214.3 31.8% 91.4%; */
+    /* --ring: 222.2 84% 4.9%; */
+    /**/
+    /* --radius: 0.2rem; */
+    /**/
+    /* --success: 196 52% 74%; */
+    /* --warning: 34 89% 85%; */
+    /* --error: 10 100% 86%; */
+
+    --fluid-screen: 100vw;
+    --fluid-bp: calc((var(--fluid-screen) - 20rem) / 2240);
+    --step--2: calc(0.7975rem + -0.16 * var(--fluid-bp));
+    --step--1: calc(0.893125rem + 1.58 * var(--fluid-bp));
+    --step-0: calc(1rem + 4 * var(--fluid-bp));
+    --step-1: calc(1.12rem + 7.28 * var(--fluid-bp));
+    --step-2: calc(1.254375rem + 11.68 * var(--fluid-bp));
+    --step-3: calc(1.405rem + 17.53 * var(--fluid-bp));
+    --step-4: calc(1.57375rem + 25.23 * var(--fluid-bp));
+    --step-5: calc(1.7625rem + 35.32 * var(--fluid-bp));
+    --step-6: calc(1.97375rem + 48.45 * var(--fluid-bp));
+    --step-7: calc(2.210625rem + 65.47 * var(--fluid-bp));
+    --step-8: calc(2.47625rem + 87.44 * var(--fluid-bp));
+    --step-9: calc(2.773125rem + 115.72 * var(--fluid-bp));
+    --step-10: calc(3.105625rem + 152.02 * var(--fluid-bp));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+  }
+}
+
+@layer utilities {
+  .animate-gradient {
+    animation: spinGradient 3s linear infinite;
+  }
+
+  @keyframes spinGradient {
+    0% {
+      background-image: conic-gradient(
+        from 90deg at 50% 50%,
+        #b3e5fc 0%,
+        #00adee 50%,
+        #b3e5fc 100%
+      );
+    }
+
+    100% {
+      background-image: conic-gradient(
+        from 450deg at 50% 50%,
+        #b3e5fc 0%,
+        #00adee 50%,
+        #b3e5fc 100%
+      );
+    }
+  }
+
+  .scroll {
+    animation: scroll 10s linear infinite;
+  }
+
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-100% - 1rem));
+    }
+  }
+}
+
+/* *, */
+/* *:hover { */
+/*   cursor: none; */
+/* } */
+
+.cursor-dot {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background-color: hsl(var(--primary));
+  /* Black dot */
+  border-radius: 50%;
+  /* Makes it a circle */
+  pointer-events: none;
+  /* Prevents interference with clicks */
+  z-index: 9999;
+  /* Ensures it stays on top */
+  transform: translate(-50%, -50%);
+  /* Centers the dot on the cursor */
+  transition: transform 0.2s ease;
+  /* Smooth scaling on hover (optional) */
+}
+
+/* Optional: Enlarge the dot on hover over interactive elements */
+.cursor-dot.hover {
+  transform: translate(-50%, -50%) scale(2.5);
+  /* Scales the dot */
+}
+
+.cursor-dot.pressed {
+  width: 6px;
+  /* Smaller size when pressed */
+  height: 6px;
+  transform: translate(-50%, -50%) scale(1);
+  /* Override hover scaling */
+}
+
+/* Alternative: Apply fallback by default, override if supported */
+.menu-overlay-enhanced {
+  /* Default/Fallback style */
+  @apply bg-foreground; /* More opaque background */
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .menu-overlay-enhanced {
+    /* Override with blur and desired transparency if supported */
+    @apply bg-foreground/50 backdrop-blur-3xl;
+  }
+}
+
+/* Alternative: Apply fallback by default, override if supported */
+.service-card-enhanced {
+  /* Default/Fallback style */
+  @apply bg-gradient-to-br from-background to-primary/10; /* More opaque background */
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .service-card-enhanced {
+    /* Override with blur and desired transparency if supported */
+    @apply bg-gradient-to-br from-transparent to-primary/10 backdrop-blur-2xl;
+  }
+}
+
+.noisy {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuZGV2L3N2Z2pzIiB2aWV3Qm94PSIwIDAgNzAwIDcwMCIgd2lkdGg9IjcwMCIgaGVpZ2h0PSI3MDAiIG9wYWNpdHk9IjEiPjxkZWZzPjxmaWx0ZXIgaWQ9Im5ubm9pc2UtZmlsdGVyIiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHByaW1pdGl2ZVVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJsaW5lYXJSR0IiPgoJPGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuMTAyIiBudW1PY3RhdmVzPSI0IiBzZWVkPSIxNSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgeD0iMCUiIHk9IjAlIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiByZXN1bHQ9InR1cmJ1bGVuY2UiPjwvZmVUdXJidWxlbmNlPgoJPGZlU3BlY3VsYXJMaWdodGluZyBzdXJmYWNlU2NhbGU9IjE1IiBzcGVjdWxhckNvbnN0YW50PSIwLjc1IiBzcGVjdWxhckV4cG9uZW50PSIyMCIgbGlnaHRpbmctY29sb3I9IiMwMGFmZWYiIHg9IjAlIiB5PSIwJSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgaW49InR1cmJ1bGVuY2UiIHJlc3VsdD0ic3BlY3VsYXJMaWdodGluZyI+CiAgICAJCTxmZURpc3RhbnRMaWdodCBhemltdXRoPSIzIiBlbGV2YXRpb249IjEwMCI+PC9mZURpc3RhbnRMaWdodD4KICAJPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgCjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0idHJhbnNwYXJlbnQiPjwvcmVjdD48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0iIzAwYWZlZiIgZmlsdGVyPSJ1cmwoI25ubm9pc2UtZmlsdGVyKSI+PC9yZWN0Pjwvc3ZnPg==');
+}
