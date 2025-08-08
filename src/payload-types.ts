@@ -206,7 +206,18 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | HomePageBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | StickyWordsSectionBlock
+    | PurposeSectionBlock
+    | StickyTabsSectionBlock
+    | BrandStatementBlock
+    | ClientsGridBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -751,13 +762,166 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "HomePageBlock".
+ * via the `definition` "StickyWordsSectionBlock".
  */
-export interface HomePageBlock {
-  firstSectionText?: string | null;
+export interface StickyWordsSectionBlock {
+  keyWords: {
+    word1: string;
+    word2: string;
+    word3: string;
+  };
+  /**
+   * Main description text with key words that will be animated
+   */
+  description: string;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'homePage';
+  blockType: 'stickyWordsSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PurposeSectionBlock".
+ */
+export interface PurposeSectionBlock {
+  /**
+   * Main hero text that will be highlighted with TextHighlight animation
+   */
+  heroText: string;
+  images?:
+    | {
+        image: number | Media;
+        /**
+         * Animation delay for liquid mask effect
+         */
+        delay?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Description text that appears next to images
+   */
+  description: string;
+  brandHeadings: {
+    heading1: string;
+    heading2: string;
+  };
+  ctaButton: {
+    link: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: number | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: number | Post;
+          } | null);
+      url?: string | null;
+      label: string;
+      /**
+       * Choose how the link should be rendered.
+       */
+      appearance?: ('default' | 'outline') | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'purposeSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StickyTabsSectionBlock".
+ */
+export interface StickyTabsSectionBlock {
+  panels?:
+    | {
+        title: string;
+        subTitle: string;
+        description: string;
+        media: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Special heading for the final panel (e.g. "Our Beekeepers")
+   */
+  finalHeading?: string | null;
+  /**
+   * Client logos displayed in hexagonal grid layout
+   */
+  clients?:
+    | {
+        name: string;
+        logo: number | Media;
+        /**
+         * Padding around the logo in pixels
+         */
+        padding?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'stickyTabsSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BrandStatementBlock".
+ */
+export interface BrandStatementBlock {
+  /**
+   * Brand statement text with highlighted words
+   */
+  statement: string;
+  ctaButton: {
+    link: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: number | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: number | Post;
+          } | null);
+      url?: string | null;
+      label: string;
+      /**
+       * Choose how the link should be rendered.
+       */
+      appearance?: ('default' | 'outline') | null;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'brandStatement';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ClientsGridBlock".
+ */
+export interface ClientsGridBlock {
+  /**
+   * Client logos displayed in hexagonal grid layout
+   */
+  clients?:
+    | {
+        name: string;
+        logo: number | Media;
+        /**
+         * Padding around the logo in pixels
+         */
+        padding?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'clientsGrid';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1064,7 +1228,11 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
-        homePage?: T | HomePageBlockSelect<T>;
+        stickyWordsSection?: T | StickyWordsSectionBlockSelect<T>;
+        purposeSection?: T | PurposeSectionBlockSelect<T>;
+        stickyTabsSection?: T | StickyTabsSectionBlockSelect<T>;
+        brandStatement?: T | BrandStatementBlockSelect<T>;
+        clientsGrid?: T | ClientsGridBlockSelect<T>;
       };
   meta?:
     | T
@@ -1166,10 +1334,119 @@ export interface FormBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "HomePageBlock_select".
+ * via the `definition` "StickyWordsSectionBlock_select".
  */
-export interface HomePageBlockSelect<T extends boolean = true> {
-  firstSectionText?: T;
+export interface StickyWordsSectionBlockSelect<T extends boolean = true> {
+  keyWords?:
+    | T
+    | {
+        word1?: T;
+        word2?: T;
+        word3?: T;
+      };
+  description?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PurposeSectionBlock_select".
+ */
+export interface PurposeSectionBlockSelect<T extends boolean = true> {
+  heroText?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        delay?: T;
+        id?: T;
+      };
+  description?: T;
+  brandHeadings?:
+    | T
+    | {
+        heading1?: T;
+        heading2?: T;
+      };
+  ctaButton?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StickyTabsSectionBlock_select".
+ */
+export interface StickyTabsSectionBlockSelect<T extends boolean = true> {
+  panels?:
+    | T
+    | {
+        title?: T;
+        subTitle?: T;
+        description?: T;
+        media?: T;
+        id?: T;
+      };
+  finalHeading?: T;
+  clients?:
+    | T
+    | {
+        name?: T;
+        logo?: T;
+        padding?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BrandStatementBlock_select".
+ */
+export interface BrandStatementBlockSelect<T extends boolean = true> {
+  statement?: T;
+  ctaButton?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ClientsGridBlock_select".
+ */
+export interface ClientsGridBlockSelect<T extends boolean = true> {
+  clients?:
+    | T
+    | {
+        name?: T;
+        logo?: T;
+        padding?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1620,16 +1897,10 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "footer".
- */
-export interface Footer {
-  id: number;
-  navItems?:
+  /**
+   * Social media links shown in the navigation overlay
+   */
+  socialLinks?:
     | {
         link: {
           type?: ('reference' | 'custom') | null;
@@ -1649,6 +1920,124 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Contact information shown in the navigation overlay
+   */
+  contactInfo: {
+    email: string;
+    /**
+     * Phone number shown in navigation overlay
+     */
+    phone: string;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  /**
+   * Services link in footer top section
+   */
+  servicesLink: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+    /**
+     * Choose how the link should be rendered.
+     */
+    appearance?: ('default' | 'outline') | null;
+  };
+  /**
+   * Contact Us link in footer top section
+   */
+  contactLink: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+    /**
+     * Choose how the link should be rendered.
+     */
+    appearance?: ('default' | 'outline') | null;
+  };
+  contactInfo: {
+    email: string;
+    phoneNumbers?:
+      | {
+          number: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Social media links using standard link field
+   */
+  socialLinks?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  companyName: string;
+  /**
+   * Privacy policy link in footer bottom
+   */
+  privacyPolicyLink: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+    /**
+     * Choose how the link should be rendered.
+     */
+    appearance?: ('default' | 'outline') | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1671,16 +2060,7 @@ export interface HeaderSelect<T extends boolean = true> {
             };
         id?: T;
       };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "footer_select".
- */
-export interface FooterSelect<T extends boolean = true> {
-  navItems?:
+  socialLinks?:
     | T
     | {
         link?:
@@ -1693,6 +2073,77 @@ export interface FooterSelect<T extends boolean = true> {
               label?: T;
             };
         id?: T;
+      };
+  contactInfo?:
+    | T
+    | {
+        email?: T;
+        phone?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  servicesLink?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+        appearance?: T;
+      };
+  contactLink?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+        appearance?: T;
+      };
+  contactInfo?:
+    | T
+    | {
+        email?: T;
+        phoneNumbers?:
+          | T
+          | {
+              number?: T;
+              id?: T;
+            };
+      };
+  socialLinks?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  companyName?: T;
+  privacyPolicyLink?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+        appearance?: T;
       };
   updatedAt?: T;
   createdAt?: T;

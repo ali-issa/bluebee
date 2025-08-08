@@ -7,7 +7,11 @@ import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
-import { HomePage } from '@/blocks/HomePageBlock/config'
+import { PurposeSection } from '@/blocks/PurposeSection/config'
+import { StickyTabsSection } from '@/blocks/StickyTabsSection/config'
+import { BrandStatement } from '@/blocks/BrandStatement/config'
+import { StickyWordsSection } from '@/blocks/StickyWordsSection/config'
+import { ClientsGrid } from '@/blocks/ClientsGrid/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -76,7 +80,18 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, HomePage],
+              blocks: [
+                CallToAction, 
+                Content, 
+                MediaBlock, 
+                Archive, 
+                FormBlock,
+                StickyWordsSection,
+                PurposeSection,
+                StickyTabsSection,
+                BrandStatement,
+                ClientsGrid
+              ],
               required: true,
               admin: {
                 initCollapsed: true,

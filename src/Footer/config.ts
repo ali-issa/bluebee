@@ -9,22 +9,76 @@ export const Footer: GlobalConfig = {
     read: () => true,
   },
   fields: [
+    link({
+      overrides: {
+        name: 'servicesLink',
+        admin: {
+          description: 'Services link in footer top section',
+        },
+      },
+    }),
+    link({
+      overrides: {
+        name: 'contactLink',
+        admin: {
+          description: 'Contact Us link in footer top section',
+        },
+      },
+    }),
     {
-      name: 'navItems',
+      name: 'contactInfo',
+      type: 'group',
+      fields: [
+        {
+          name: 'email',
+          type: 'email',
+          required: true,
+          defaultValue: 'info@bluebeecreation.com',
+        },
+        {
+          name: 'phoneNumbers',
+          type: 'array',
+          minRows: 1,
+          fields: [
+            {
+              name: 'number',
+              type: 'text',
+              required: true,
+            },
+          ],
+          defaultValue: [
+            { number: '+971 56 394 1288' },
+            { number: '+961 78 942 777' },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'socialLinks',
       type: 'array',
       fields: [
         link({
           appearances: false,
         }),
       ],
-      maxRows: 6,
       admin: {
-        initCollapsed: true,
-        components: {
-          RowLabel: '@/Footer/RowLabel#RowLabel',
-        },
+        description: 'Social media links using standard link field',
       },
     },
+    {
+      name: 'companyName',
+      type: 'text',
+      required: true,
+      defaultValue: 'bluebee Creation',
+    },
+    link({
+      overrides: {
+        name: 'privacyPolicyLink',
+        admin: {
+          description: 'Privacy policy link in footer bottom',
+        },
+      },
+    }),
   ],
   hooks: {
     afterChange: [revalidateFooter],

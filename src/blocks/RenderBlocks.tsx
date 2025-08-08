@@ -7,7 +7,11 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
-import { HomePageBlock } from '@/blocks/HomePageBlock/Component'
+import { PurposeSectionBlockComponent } from '@/blocks/PurposeSection/Component'
+import { StickyTabsSectionBlockComponent } from '@/blocks/StickyTabsSection/Component'
+import { BrandStatementBlockComponent } from '@/blocks/BrandStatement/Component'
+import { StickyWordsSectionBlockComponent } from '@/blocks/StickyWordsSection/Component'
+import { ClientsGridBlockComponent } from '@/blocks/ClientsGrid/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -15,7 +19,11 @@ const blockComponents = {
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
-  homePage: HomePageBlock,
+  stickyWordsSection: StickyWordsSectionBlockComponent,
+  purposeSection: PurposeSectionBlockComponent,
+  stickyTabsSection: StickyTabsSectionBlockComponent,
+  brandStatement: BrandStatementBlockComponent,
+  clientsGrid: ClientsGridBlockComponent,
 }
 
 export const RenderBlocks: React.FC<{

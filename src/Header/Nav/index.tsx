@@ -8,25 +8,7 @@ import gsap from 'gsap'
 
 import type { Header as HeaderType } from '@/payload-types'
 import { Logo } from '@/components/Logo/Logo'
-
-const menuLinks = [
-  {
-    path: '/',
-    label: 'Home',
-  },
-  {
-    path: '/services',
-    label: 'Services',
-  },
-  // {
-  //   path: '/posts',
-  //   label: 'Journal',
-  // },
-  {
-    path: '/contact',
-    label: 'Contact',
-  },
-]
+import { CMSLink } from '@/components/Link'
 
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const navItems = data?.navItems || []
@@ -90,34 +72,46 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
           {/* Main Menu Content Section (Flex Item) */}
           <div className="menu-copy w-full flex flex-col justify-between py-5 gap-8">
             <ul className="menu-links space-y-8">
-              {menuLinks.map((link, index) => (
+              {navItems.map((navItem, index) => (
                 <li className="overflow-hidden" onClick={toggleMenu} key={index}>
                   <div className="menu-link-item-holder">
-                    <Link
-                      href={link.path}
+                    <CMSLink
+                      {...navItem.link}
                       className="relative cursor-pointer text-background text-5xl md:text-7xl font-light tracking-[-0.02em] leading-[85%] hover:border-b-[5px] hover:text-primary border-dashed hover:font-medium"
-                    >
-                      {link.label}
-                    </Link>
+                      appearance="inline"
+                    />
                   </div>
                 </li>
               ))}
             </ul>
             <div className="flex text-background font-light">
-              {/* Info Column 1 */}
+              {/* Info Column 1 - Social Links */}
               <div className="flex-1 flex flex-col justify-end space-y-1">
-                <a href="https://www.instagram.com/bluebeecreation">Instagram &#8599;</a>
-                <a href="https://www.linkedin.com/company/bluebee-creation/">LinkedIn &#8599;</a>
-                <a href="https://www.behance.net/bluebeecreation">Behance &#8599;</a>
-                <a href="https://www.facebook.com/bluebee.creation/">Facebook &#8599;</a>
+                {data?.socialLinks?.map((socialLink, index) => (
+                  <CMSLink
+                    key={index}
+                    {...socialLink.link}
+                    label={''}
+                    className="hover:underline"
+                    appearance="inline"
+                  >
+                    {socialLink.link.label} &#8599;
+                  </CMSLink>
+                ))}
               </div>
-              {/* Info Column 2 */}
+              {/* Info Column 2 - Contact Info */}
               <div className="flex-1 flex flex-col justify-end space-y-1">
-                <a className="hover:underline" href="mailto:info@bluebeecreation.com">
-                  info@bluebeecreation.com
+                <a
+                  className="hover:underline"
+                  href={`mailto:${data?.contactInfo?.email || 'info@bluebeecreation.com'}`}
+                >
+                  {data?.contactInfo?.email || 'info@bluebeecreation.com'}
                 </a>
-                <a className="hover:underline" href="tel:+971563941288">
-                  +971 56 394 1288
+                <a
+                  className="hover:underline"
+                  href={`tel:${data?.contactInfo?.phone?.replace(/\s+/g, '') || '+971563941288'}`}
+                >
+                  {data?.contactInfo?.phone || '+971 56 394 1288'}
                 </a>
               </div>
             </div>
