@@ -173,13 +173,10 @@ export const StickyTabsSectionBlockComponent: React.FC<Props> = ({
               )}
               {lastPanel.description}
             </div>
-            {clients && (
-              <ClientsGridBlockComponent clients={clients} />
-            )}
+            {clients && <ClientsGridBlockComponent blockType="clientsGrid" clients={clients} />}
           </div>
         </div>
       )}
     </>
   )
 }
-

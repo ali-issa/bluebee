@@ -6,6 +6,7 @@ import { Icons } from '@/components/svg'
 // import { cn } from '@/utilities/ui'
 import { usePathname } from 'next/navigation'
 import { CMSLink } from '@/components/Link'
+import Link from 'next/link'
 
 interface FooterClientProps {
   data: Footer
@@ -33,20 +34,14 @@ export function FooterClient({ data }: FooterClientProps) {
                 </CMSLink>
               </li>
             )}
-            {data?.contactLink?.url && (
-              <li className="px-5 py-1 rounded-full font-semibold bg-primary text-background">
-                <CMSLink
-                  {...data.contactLink}
-                  className="group flex items-center gap-2"
-                  appearance="inline"
-                >
-                  <span className="block mt-1">{data.contactLink.label}</span>
-                  <span className="transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1">
-                    &#8599;
-                  </span>
-                </CMSLink>
-              </li>
-            )}
+            <li className="px-5 py-1 rounded-full font-semibold bg-primary text-background">
+              <Link className="group flex items-center gap-2" href={'/contact'}>
+                <span className="block mt-1">{data.contactLink.label}</span>
+                <span className="transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                  &#8599;
+                </span>
+              </Link>
+            </li>
           </>
         )}
       </ul>

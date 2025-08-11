@@ -5,7 +5,7 @@ import type { Footer } from '@/payload-types'
 import { FooterClient } from './Component.client'
 
 export async function Footer() {
-  const footerData: Footer = await getCachedGlobal('footer', 1)()
+  const footerData = await getCachedGlobal('footer', 1)()
 
-  return <FooterClient data={footerData} />
+  return <FooterClient data={footerData as any} />
 }

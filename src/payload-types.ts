@@ -217,6 +217,11 @@ export interface Page {
     | StickyTabsSectionBlock
     | BrandStatementBlock
     | ClientsGridBlock
+    | ServicesHeroBlock
+    | ServicesBlock
+    | BeeInTouch
+    | OurOffices
+    | Careers
   )[];
   meta?: {
     title?: string | null;
@@ -925,6 +930,149 @@ export interface ClientsGridBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesHeroBlock".
+ */
+export interface ServicesHeroBlock {
+  /**
+   * Small uppercase tagline text
+   */
+  tagline: string;
+  /**
+   * Main large heading
+   */
+  heading: string;
+  /**
+   * Main description paragraph
+   */
+  description: string;
+  /**
+   * Subtitle paragraph below main description
+   */
+  subtitle: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'servicesHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesBlock".
+ */
+export interface ServicesBlock {
+  /**
+   * Link shown when hovering over service panels
+   */
+  ctaLink: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
+  /**
+   * List of all services offered
+   */
+  servicesPanels?:
+    | {
+        /**
+         * Main service title (e.g., "Advertising & Branding")
+         */
+        title: string;
+        /**
+         * Service tagline (e.g., "Shaping Identities. Spreading Buzz.")
+         */
+        subTitle: string;
+        /**
+         * Detailed service description
+         */
+        description: string;
+        /**
+         * Call-to-action text that appears on hover
+         */
+        cta: string;
+        /**
+         * List of service offerings with bullet points
+         */
+        offerings?:
+          | {
+              offering: string;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Client testimonials for this service
+         */
+        testimonials?:
+          | {
+              quote: string;
+              author: string;
+              position: string;
+              /**
+               * Avatar URL (optional)
+               */
+              avatar?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'services';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BeeInTouch".
+ */
+export interface BeeInTouch {
+  heroImageSrc: string;
+  heroImageAlt: string;
+  form: number | Form;
+  enableIntro?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'beeInTouch';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "OurOffices".
+ */
+export interface OurOffices {
+  title: string;
+  offices?:
+    | {
+        address: string;
+        directionsUrl: string;
+        directionsLabel?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ourOffices';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Careers".
+ */
+export interface Careers {
+  title: string;
+  description: string;
+  email: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'careers';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1233,6 +1381,11 @@ export interface PagesSelect<T extends boolean = true> {
         stickyTabsSection?: T | StickyTabsSectionBlockSelect<T>;
         brandStatement?: T | BrandStatementBlockSelect<T>;
         clientsGrid?: T | ClientsGridBlockSelect<T>;
+        servicesHero?: T | ServicesHeroBlockSelect<T>;
+        services?: T | ServicesBlockSelect<T>;
+        beeInTouch?: T | BeeInTouchSelect<T>;
+        ourOffices?: T | OurOfficesSelect<T>;
+        careers?: T | CareersSelect<T>;
       };
   meta?:
     | T
@@ -1447,6 +1600,99 @@ export interface ClientsGridBlockSelect<T extends boolean = true> {
         padding?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesHeroBlock_select".
+ */
+export interface ServicesHeroBlockSelect<T extends boolean = true> {
+  tagline?: T;
+  heading?: T;
+  description?: T;
+  subtitle?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesBlock_select".
+ */
+export interface ServicesBlockSelect<T extends boolean = true> {
+  ctaLink?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+      };
+  servicesPanels?:
+    | T
+    | {
+        title?: T;
+        subTitle?: T;
+        description?: T;
+        cta?: T;
+        offerings?:
+          | T
+          | {
+              offering?: T;
+              id?: T;
+            };
+        testimonials?:
+          | T
+          | {
+              quote?: T;
+              author?: T;
+              position?: T;
+              avatar?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BeeInTouch_select".
+ */
+export interface BeeInTouchSelect<T extends boolean = true> {
+  heroImageSrc?: T;
+  heroImageAlt?: T;
+  form?: T;
+  enableIntro?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "OurOffices_select".
+ */
+export interface OurOfficesSelect<T extends boolean = true> {
+  title?: T;
+  offices?:
+    | T
+    | {
+        address?: T;
+        directionsUrl?: T;
+        directionsLabel?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Careers_select".
+ */
+export interface CareersSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  email?: T;
   id?: T;
   blockName?: T;
 }

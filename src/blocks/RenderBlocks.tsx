@@ -12,6 +12,11 @@ import { StickyTabsSectionBlockComponent } from '@/blocks/StickyTabsSection/Comp
 import { BrandStatementBlockComponent } from '@/blocks/BrandStatement/Component'
 import { StickyWordsSectionBlockComponent } from '@/blocks/StickyWordsSection/Component'
 import { ClientsGridBlockComponent } from '@/blocks/ClientsGrid/Component'
+import { ServicesHeroBlockComponent } from '@/blocks/ServicesHero/Component'
+import { ServicesBlockComponent } from '@/blocks/Services/Component'
+import { BeeInTouchBlockComponent } from '@/blocks/BeeInTouch/Component'
+import { OurOfficesBlockComponent } from '@/blocks/OurOffices/Component'
+import { CareersBlockComponent } from '@/blocks/Careers/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -24,6 +29,11 @@ const blockComponents = {
   stickyTabsSection: StickyTabsSectionBlockComponent,
   brandStatement: BrandStatementBlockComponent,
   clientsGrid: ClientsGridBlockComponent,
+  servicesHero: ServicesHeroBlockComponent,
+  services: ServicesBlockComponent,
+  beeInTouch: BeeInTouchBlockComponent,
+  ourOffices: OurOfficesBlockComponent,
+  careers: CareersBlockComponent,
 }
 
 export const RenderBlocks: React.FC<{
@@ -46,7 +56,7 @@ export const RenderBlocks: React.FC<{
               return (
                 <Fragment key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
-                  <Block {...block} disableInnerContainer />
+                  <Block {...block} />
                 </Fragment>
               )
             }

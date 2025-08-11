@@ -10,10 +10,11 @@ import fragmentShader from '@/shaders/grain-fragment.shader'
 import { degToRad, lerp, randFloat } from 'three/src/math/MathUtils.js'
 import { useGLTF } from '@react-three/drei'
 import { Panel } from './sticky-sections'
-import Link from 'next/link'
+import { CMSLink } from '@/components/Link'
 import { useGSAP } from '@gsap/react'
 import SplitType from 'split-type'
 import { useWindowSize } from 'usehooks-ts'
+import Link from 'next/link'
 
 gsap.registerPlugin(ScrollTrigger, SplitType)
 
@@ -313,9 +314,11 @@ const SceneComponent = forwardRef<SceneComponentRef, unknown>((_, ref) => {
 export function ServicesScene({
   panels,
   panelRefs,
+  ctaLink,
 }: {
   panels: Panel[]
   panelRefs: HTMLDivElement[]
+  ctaLink?: any
 }) {
   const sceneRef = useRef<SceneComponentRef | null>(null)
   const [ctaText, setCtaText] = useState<string>('')
@@ -402,12 +405,9 @@ export function ServicesScene({
         <SceneComponent ref={sceneRef} />
       </Canvas>
 
-      {ctaText && (
-        <Link
-          href="/contact#email"
-          className="group fixed bottom-0 left-0 text-2 text-primary p-5 md:p-10"
-        >
-          <span ref={wordsToSplitRef} key={ctaText}>
+      {ctaText && ctaLink && (
+        <Link href={'/contanct'} className="group fixed bottom-0 left-0 text-primary p-5 md:p-10">
+          <span className="text-2" ref={wordsToSplitRef} key={ctaText}>
             {ctaText}{' '}
             <span className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-all">
               &#8599;

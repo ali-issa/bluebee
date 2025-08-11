@@ -12,6 +12,11 @@ import { StickyTabsSection } from '@/blocks/StickyTabsSection/config'
 import { BrandStatement } from '@/blocks/BrandStatement/config'
 import { StickyWordsSection } from '@/blocks/StickyWordsSection/config'
 import { ClientsGrid } from '@/blocks/ClientsGrid/config'
+import { ServicesHeroBlock } from '@/blocks/ServicesHero/config'
+import { ServicesBlock } from '@/blocks/Services/config'
+import { BeeInTouchBlock } from '@/blocks/BeeInTouch/config'
+import { OurOfficesBlock } from '@/blocks/OurOffices/config'
+import { CareersBlock } from '@/blocks/Careers/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -90,7 +95,12 @@ export const Pages: CollectionConfig<'pages'> = {
                 PurposeSection,
                 StickyTabsSection,
                 BrandStatement,
-                ClientsGrid
+                ClientsGrid,
+                ServicesHeroBlock,
+                ServicesBlock,
+                BeeInTouchBlock,
+                OurOfficesBlock,
+                CareersBlock
               ],
               required: true,
               admin: {

@@ -23,7 +23,7 @@ export default function MotionPath() {
           fill="transparent"
           initial={{ pathLength: 0.001, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 0.7 }}
-          transition={transition}
+          transition={transition as any}
         />
       </svg>
       <motion.div
@@ -31,7 +31,7 @@ export default function MotionPath() {
         style={box}
         initial={{ offsetDistance: '0%', opacity: 0, scale: 2.5 }}
         animate={{ offsetDistance: '100%', opacity: 1, scale: 1 }}
-        transition={transition}
+        transition={transition as any}
       >
         <Icons.coloredBeeInverted className="w-12 h-auto" />
       </motion.div>

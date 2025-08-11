@@ -1,11 +1,11 @@
 import React from 'react'
 import { StaggerContainer } from '@/components/animations/stagger-container'
 import { TextHighlight } from '@/components/animations/text-highlight'
-import { HeroSectionBlock } from '@/payload-types'
+// import { HeroSectionBlock } from '@/payload-types'
 
 type Props = {
   className?: string
-} & HeroSectionBlock
+} & any
 
 export const HeroSectionBlockComponent: React.FC<Props> = ({ title, className }) => {
   return (
@@ -19,3 +19,4 @@ export const HeroSectionBlockComponent: React.FC<Props> = ({ title, className })
     </StaggerContainer>
   )
 }
+
