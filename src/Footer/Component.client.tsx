@@ -84,7 +84,7 @@ export function FooterClient({ data }: FooterClientProps) {
           ) : (
             <CMSLink
               type="custom"
-              url="/legal/privacy-policy"
+              url="/privacy-policy"
               label="Privacy Policy"
               appearance="inline"
             />

@@ -73,5 +73,10 @@ export const Content: Block = {
       },
       fields: columnFields,
     },
+    {
+      name: 'enableReadingWidth',
+      type: 'checkbox',
+      defaultValue: false,
+    },
   ],
 }
