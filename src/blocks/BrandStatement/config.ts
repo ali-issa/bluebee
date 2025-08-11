@@ -18,11 +18,12 @@ export const BrandStatement: Block = {
       type: 'group',
       fields: [
         link({
-          overrides: {
-            required: true,
-          },
+          // overrides: {
+          //   required: true,
+          // },
         }),
       ],
     },
   ],
 }
+
