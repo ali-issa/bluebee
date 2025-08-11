@@ -16,7 +16,6 @@ export const BrandStatement: Block = {
     {
       name: 'ctaButton',
       type: 'group',
-      required: true,
       fields: [link()],
     },
   ],

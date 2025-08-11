@@ -68,9 +68,7 @@ export const PurposeSection: Block = {
     {
       name: 'ctaButton',
       type: 'group',
-      required: true,
       fields: [link()],
     },
   ],
 }
-
