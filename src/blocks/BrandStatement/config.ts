@@ -16,14 +16,8 @@ export const BrandStatement: Block = {
     {
       name: 'ctaButton',
       type: 'group',
-      fields: [
-        link({
-          // overrides: {
-          //   required: true,
-          // },
-        }),
-      ],
+      required: true,
+      fields: [link()],
     },
   ],
 }
-

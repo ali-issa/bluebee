@@ -9,7 +9,8 @@ export const PurposeSection: Block = {
       name: 'heroText',
       type: 'textarea',
       required: true,
-      defaultValue: 'Everything we do is rooted in purpose, just like the bees that inspire us. Each move, every detail, there\'s intention behind it.',
+      defaultValue:
+        "Everything we do is rooted in purpose, just like the bees that inspire us. Each move, every detail, there's intention behind it.",
       admin: {
         description: 'Main hero text that will be highlighted with TextHighlight animation',
       },
@@ -40,7 +41,8 @@ export const PurposeSection: Block = {
       name: 'description',
       type: 'textarea',
       required: true,
-      defaultValue: 'Keep scrolling to discover how the spirit of the hive shapes who we are, what we do, and how we deliver.',
+      defaultValue:
+        'Keep scrolling to discover how the spirit of the hive shapes who we are, what we do, and how we deliver.',
       admin: {
         description: 'Description text that appears next to images',
       },
@@ -66,13 +68,9 @@ export const PurposeSection: Block = {
     {
       name: 'ctaButton',
       type: 'group',
-      fields: [
-        link({
-          overrides: {
-            required: true,
-          },
-        }),
-      ],
+      required: true,
+      fields: [link()],
     },
   ],
 }
+
