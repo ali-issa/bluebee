@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '@/fields/linkGroup'
+import { kill } from 'process'
 
 export const hero: Field = {
   name: 'hero',
@@ -50,6 +51,7 @@ export const hero: Field = {
       admin: {
         condition: (_, { type } = {}) => type === 'homeHero',
       },
+      defaultValue: 'Pollinating Creative Solutions',
     },
     {
       name: 'marqueeItems',
@@ -62,6 +64,7 @@ export const hero: Field = {
           maxLength: 25,
         },
       ],
+      defaultValue: [{ item: 'beelieve' }, { item: 'create' }, { item: 'inspire' }],
       admin: {
         condition: (_, { type } = {}) => type === 'homeHero',
       },
@@ -76,6 +79,12 @@ export const hero: Field = {
           type: 'text',
           maxLength: 25,
         },
+      ],
+      defaultValue: [
+        { text: 'Creating extraordinary' },
+        { text: 'Delivering excellence' },
+        { text: 'Building global visions' },
+        { text: 'Buzzing for 17 years' },
       ],
       admin: {
         condition: (_, { type } = {}) => type === 'homeHero',

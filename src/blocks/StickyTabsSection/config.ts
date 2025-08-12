@@ -8,6 +8,50 @@ export const StickyTabsSection: Block = {
       name: 'panels',
       type: 'array',
       minRows: 1,
+      defaultValue: [
+        {
+          title: 'Face to Face',
+          subTitle: 'Bees Recognize Faces. So Do We.',
+          description:
+            'Bees can recognize human faces. At bluebee, we see the people behind the brands, not just the logos. We build genuine connections that fuel long-term partnerships.',
+        },
+        {
+          title: 'A Vision in Full Color',
+          subTitle: 'Bees See in Color. We Create in It.',
+          description:
+            'Bees perceive ultraviolet light, seeing what others can’t. We harness that vision to design vibrant brand identities and campaigns that stand out in any crowd.',
+        },
+        {
+          title: 'Purposeful by Nature',
+          subTitle: 'Not All Bees Sting. Ours Spark.',
+          description:
+            'Not every bee attacks. Ours engage, inspire, and energize. Through event management, team-building, and experiential marketing, we leave a lasting, positive buzz.',
+        },
+        {
+          title: 'Fast & Focused',
+          subTitle: '20 MPH of Creative Momentum',
+          description:
+            'Bees fly with speed and direction. So do we. With over 750 projects across 15 countries, our solutions move with precision and purpose.',
+        },
+        {
+          title: 'Tireless Devotion',
+          subTitle: 'Bees Don’t Sleep. Neither Does Passion.',
+          description:
+            'Driven by purpose, our beez buzz with round-the-clock dedication. From brainstorming to delivery, we never stop until excellence is achieved.',
+        },
+        {
+          title: 'Caffeine Powered',
+          subTitle: 'Buzzed on Ideas',
+          description:
+            'Bees are attracted to caffeine. We’re addicted to fresh concepts and creative sparks. Our campaigns stimulate, surprise, and stick with audiences.',
+        },
+        {
+          title: 'Built to Last',
+          subTitle: 'Economical. Exceptional.',
+          description:
+            'Bees engineer perfect hives with minimal resources. We follow the same principle, optimized productivity, maximum impact. Always cost- and time-efficient.',
+        },
+      ],
       fields: [
         {
           name: 'title',

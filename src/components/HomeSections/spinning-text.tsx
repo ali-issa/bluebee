@@ -1,5 +1,6 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
@@ -12,6 +13,11 @@ import { Icons } from '@/components/svg'
 import { Media } from '@/payload-types'
 import MotionPath from '../path'
 import Link from 'next/link'
+
+const HexTrail = dynamic(() => import('@/components/HomeSections/hex-trail'), {
+  loading: () => <></>,
+  ssr: false,
+})
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitType)
 
@@ -113,6 +119,7 @@ export const SpinningText: FC<SpinningTextProps> = ({
       ref={containerRef}
       className="relative w-full min-h-svh flex flex-col md:flex-row items-center justify-center leading-none text-background bg-black"
     >
+      <HexTrail />
       <MotionPath />
 
       <div className="relative container flex">

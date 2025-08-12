@@ -113,6 +113,12 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                 >
                   {data?.contactInfo?.phone || '+971 56 394 1288'}
                 </a>
+                <a
+                  className="hover:underline"
+                  href={`tel:${data?.contactInfo?.secondaryPhone?.replace(/\s+/g, '') || '+96178942777'}`}
+                >
+                  {data?.contactInfo?.secondaryPhone || '+961 78 942 777'}
+                </a>
               </div>
             </div>
           </div>

@@ -9,7 +9,7 @@ import { cn } from '@/utilities/ui'
 import Image from 'next/image'
 import { ClientsGridBlockComponent } from '@/blocks/ClientsGrid/Component'
 import { Icons } from '@/components/svg'
-import { StickyTabsSectionBlock, Media } from '@/payload-types'
+import { StickyTabsSectionBlock } from '@/payload-types'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 

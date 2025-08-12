@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useWindowSize } from 'usehooks-ts'
-import { ClientsGridBlock, Media } from '@/payload-types'
+import { ClientsGridBlock } from '@/payload-types'
 
 type Props = {
   className?: string
@@ -27,7 +27,7 @@ export const ClientsGridBlockComponent: React.FC<Props> = ({ clients, className 
   if (!clients || clients.length === 0) return null
 
   // Convert CMS clients to the format needed for rendering
-  const processedClients: Client[] = clients.map(client => ({
+  const processedClients: Client[] = clients.map((client) => ({
     name: client.name,
     logo: typeof client.logo === 'object' ? client.logo?.url || '' : '',
     padding: client.padding || 5,

@@ -24,32 +24,6 @@ export const Header: GlobalConfig = {
           RowLabel: '@/Header/RowLabel#RowLabel',
         },
       },
-      defaultValue: [
-        {
-          link: {
-            type: 'reference',
-            reference: {
-              relationTo: 'pages',
-              value: null,
-            },
-            label: 'Home',
-          },
-        },
-        {
-          link: {
-            type: 'custom',
-            url: '/services',
-            label: 'Services',
-          },
-        },
-        {
-          link: {
-            type: 'custom',
-            url: '/contact',
-            label: 'Contact',
-          },
-        },
-      ],
     },
     {
       name: 'socialLinks',
@@ -114,6 +88,15 @@ export const Header: GlobalConfig = {
           defaultValue: '+971 56 394 1288',
           admin: {
             description: 'Phone number shown in navigation overlay',
+          },
+        },
+        {
+          name: 'secondaryPhone',
+          type: 'text',
+          required: false,
+          defaultValue: '+961 78 942 777',
+          admin: {
+            description: 'Secondary phone number shown in navigation overlay',
           },
         },
       ],

@@ -46,16 +46,39 @@ export const Footer: GlobalConfig = {
               required: true,
             },
           ],
-          defaultValue: [
-            { number: '+971 56 394 1288' },
-            { number: '+961 78 942 777' },
-          ],
+          defaultValue: [{ number: '+971 56 394 1288' }, { number: '+961 78 942 777' }],
         },
       ],
     },
     {
       name: 'socialLinks',
       type: 'array',
+      defaultValue: [
+        {
+          link: {
+            type: 'custom',
+            url: 'https://www.facebook.com/bluebee.creation/',
+            label: 'Facebook',
+            newTab: true,
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            url: 'https://www.instagram.com/bluebeecreation',
+            label: 'Instagram',
+            newTab: true,
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            url: 'https://www.linkedin.com/company/bluebee-creation/',
+            label: 'LinkedIn',
+            newTab: true,
+          },
+        },
+      ],
       fields: [
         link({
           appearances: false,

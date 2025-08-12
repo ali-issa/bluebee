@@ -2163,6 +2163,10 @@ export interface Header {
      * Phone number shown in navigation overlay
      */
     phone: string;
+    /**
+     * Secondary phone number shown in navigation overlay
+     */
+    secondaryPhone?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -2313,6 +2317,7 @@ export interface HeaderSelect<T extends boolean = true> {
     | {
         email?: T;
         phone?: T;
+        secondaryPhone?: T;
       };
   updatedAt?: T;
   createdAt?: T;
